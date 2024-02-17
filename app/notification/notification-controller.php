@@ -17,7 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             WHERE user_id = '$user_id')";
 
         if ($conn->query($sql_query) === TRUE) {            
-            echo "Marking as read successfully!.";
+            echo "Marked as Read!";
         } else {            
             echo "Error: " . $sql_query . "<br>" . $conn->error;
         }    
@@ -40,7 +40,7 @@ if ($_SERVER["REQUEST_METHOD"] == "PATCH") {
             WHERE user_id = '$user_id') AND id = '$id'";
 
         if ($conn->query($sql_query) === TRUE) {            
-            echo "Marking as read successfully!.";
+            echo "Marked as Read!";
         } else {            
             echo "Error: " . $sql_query . "<br>" . $conn->error;
         }    

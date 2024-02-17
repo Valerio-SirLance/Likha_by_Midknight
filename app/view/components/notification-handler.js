@@ -1,14 +1,22 @@
 document.addEventListener("DOMContentLoaded", function () {
     const badge = document.getElementById('notif-badge-sidebar').value;
-    const circle = document.getElementById('circle')
-    const notifHead = document.getElementById('notif-head')
+    const circle = document.getElementById('circle');
+    const text = parseInt(document.getElementById('badge-text').textContent); // Use textContent instead of value
+    const notifHead = document.getElementById('notif-head');
+    
     if (badge === '1') {
-        circle.style.display = 'flex'
+        if (text === 0) {
+            circle.style.display = 'none';
+            notifHead.style.left = '0px';
+        } else {
+            circle.style.display = 'flex';
+        }
     } else {
-        circle.style.display = 'none'
-        notifHead.style.left = '0px'
+        circle.style.display = 'none';
+        notifHead.style.left = '0px';
     }
-    function getNotifCount () {
+
+    function getNotifCount() {
         fetch('../notification/notification-controller.php', {
             method: 'GET',         
         })
@@ -18,20 +26,25 @@ document.addEventListener("DOMContentLoaded", function () {
             }
             return response.text();      
         })
-         .then((data) => {
-            // Clear the text in the textarea after successful submission
-            const bagdeText = document.getElementById('badge-text');
-            bagdeText.textContent = data;
-    
+        .then((data) => {
+            const badgeText = document.getElementById('badge-text');
+            badgeText.textContent = data.trim(); // Trim any whitespace
+            const count = parseInt(data.trim());
+            
+            if (count === 0) {
+                circle.style.display = 'none';
+                notifHead.style.left = '0px';
+            } else {
+                circle.style.display = 'flex';
+            }
         })
         .catch((error) => {
-            alert('Error:', error.message);
+            console.error('Error:', error.message);
         });
     }
-    getNotifCount()
-
-    
+    getNotifCount();
 });
+
 document.getElementById("notif_btn").addEventListener("click", function (e) {
         
     console.log("Notification Button Clicked");
