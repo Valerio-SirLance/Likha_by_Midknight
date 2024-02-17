@@ -191,9 +191,9 @@ $userAvatar = getAvatarUrl($post_id);
             <div class="posting">
                 <div class="post-img">
                     <!-- Display the post image -->
-                    <button id="previous" class="nav-button" onclick="navigatePost('previous')"><img src="../assets/images/left_arrow_icon.png" alt="Previous"></button>
+                    <button id="previous" class="nav-button" onclick="navigatePost('next')"><img src="../assets/images/left_arrow_icon.png" alt="Previous"></button>
                     <img src="../posting/uploads/<?php echo $post_image; ?>" alt="Posted Image"> 
-                    <button id="next" class="nav-button" onclick="navigatePost('next')"><img src="../assets/images/right_arrow_icon.png" alt="Next"></button>
+                    <button id="next" class="nav-button" onclick="navigatePost('previous')"><img src="../assets/images/right_arrow_icon.png" alt="Next"></button>
                 </div>
                 <div class="post-text">
                     <div class="user">
