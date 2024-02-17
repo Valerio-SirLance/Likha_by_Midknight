@@ -191,7 +191,9 @@ $userAvatar = getAvatarUrl($post_id);
             <div class="posting">
                 <div class="post-img">
                     <!-- Display the post image -->
-                    <img src="../posting/uploads/<?php echo $post_image; ?>" alt="Posted Image">
+                    <button id="previous" class="nav-button" onclick="navigatePost('previous')"><img src="../assets/images/left_arrow_icon.png" alt="Previous"></button>
+                    <img src="../posting/uploads/<?php echo $post_image; ?>" alt="Posted Image"> 
+                    <button id="next" class="nav-button" onclick="navigatePost('next')"><img src="../assets/images/right_arrow_icon.png" alt="Next"></button>
                 </div>
                 <div class="post-text">
                     <div class="user">
@@ -324,6 +326,47 @@ $userAvatar = getAvatarUrl($post_id);
                             </div>                            
                         </div>
                     </div>
+
+<script>
+    function navigatePost(direction) {
+        // Retrieve the current post ID
+        var currentPostId = <?php echo $post_id; ?>;
+
+        // Fetch the next or previous post ID from the server based on the current post ID
+        <?php
+        // Fetch next post ID
+        $sqlNext = "SELECT MIN(post_id) AS next_post_id FROM tblpost WHERE post_id > $post_id AND deleted_at IS NULL";
+        $resultNext = $conn->query($sqlNext);
+        $nextRow = $resultNext->fetch_assoc();
+        $nextPostId = $nextRow['next_post_id'];
+
+        // Fetch previous post ID
+        $sqlPrev = "SELECT MAX(post_id) AS prev_post_id FROM tblpost WHERE post_id < $post_id AND deleted_at IS NULL";
+        $resultPrev = $conn->query($sqlPrev);
+        $prevRow = $resultPrev->fetch_assoc();
+        $prevPostId = $prevRow['prev_post_id'];
+
+        // Fetch the last post ID
+        $sqlLast = "SELECT MAX(post_id) AS last_post_id FROM tblpost WHERE deleted_at IS NULL";
+        $resultLast = $conn->query($sqlLast);
+        $lastRow = $resultLast->fetch_assoc();
+        $lastPostId = $lastRow['last_post_id'];
+        ?>
+
+        // Determine the next or previous post ID based on the direction
+        var nextPostId, prevPostId;
+        if (direction === 'next') {
+            nextPostId = <?php echo $nextPostId !== null ? $nextPostId : 1; ?>;
+            window.location.href = 'display-post.php?post_id=' + nextPostId;
+        } else if (direction === 'previous') {
+            prevPostId = <?php echo $prevPostId !== null ? $prevPostId : $lastPostId; ?>;
+            window.location.href = 'display-post.php?post_id=' + prevPostId;
+        }
+    }
+</script>
+
+
+
 </body>
 
 </html>
