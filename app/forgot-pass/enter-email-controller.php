@@ -39,7 +39,7 @@ function sendForgotPasswordLink($email)
         the security of your account.
 
         <br><br>
-        <a href="http://localhost/project-midknight/app/forgot-pass/forgot-password.php?email=' .
+        <a href="http://localhost/likha-socmed/app/forgot-pass/forgot-password.php?email=' .
         $email . '">
             Verify Here</a>
     ';
