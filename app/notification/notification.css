@@ -1,0 +1,126 @@
+/* home.css */
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans&display=swap');
+
+
+
+.notification-container {
+    max-width: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-width 0.3s ease, opacity 0.3s ease, left 0.3s ease; /* Added left transition */
+    position: fixed;
+    top: 10%;
+    left: 19%; /* Adjust the left position to your desired percentage */
+    padding: 20px;
+    z-index: 999;
+    outline-color: #343437;
+    background-color: #fff;
+    border-style: double;
+    border-width: 5px;
+    border-color: #739ad1;
+    border-radius: 15px;
+    box-shadow: 0 10px 10px rgba(0, 0.1, 0, 0.1);
+    min-height: 400px;
+    max-height: 400px;
+    min-width: 400px;
+    max-width: 400px;
+   
+}
+
+.notification-container.show-notif {
+    max-width: 100%; /* Adjust the max-width to make it visible */
+    opacity: 1;
+    left: 22%; /* Adjust the left position to make it visible */
+}
+
+.notification-container:not(.show-notif) {
+    pointer-events: none;
+    max-width: 0;
+    opacity: 0;
+    left: 19%;
+}
+
+.notif-body {
+    max-height: 250px; 
+    overflow-y: auto;
+}
+
+.filter {
+    display: flex;    
+    gap: 10px;
+    border-bottom: #739ad1;
+    margin-bottom: 15px;
+    padding-bottom: 20px;
+    border-bottom-width: 5px;
+    border-bottom-style: inset;
+}
+
+.filter button {
+   
+    display: inline-block;
+    background-color: #739ad1;
+    color: #fff;
+    border: none;
+    padding: 8px;
+    border-radius: 5px;
+    cursor: pointer;
+      
+}
+.notif-anchor {
+    text-decoration: none;
+    color: black;
+}
+.notif-anchor:hover{
+    background: lightgray;
+}
+
+
+.notifications {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;    
+}
+.notif_chunk {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.notification {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 10px;
+    padding: 10px;    
+    /* padding-bottom: 10px; */
+    border-bottom: 1px solid #739ad1;
+    
+
+}
+
+
+
+.notification button {
+    border: none;
+    background-color: transparent;
+    color: #739ad1;        
+    cursor: pointer;
+}
+
+.notif-user{
+    color: #739ad1;
+}
+.read-notif-user{
+    color: #8d8d8d;
+}
+
+.notification-timestamp{
+    color: #8d8d8d;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}

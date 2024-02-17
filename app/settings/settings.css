@@ -1,0 +1,708 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans&display=swap");
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #739ad1;
+  font-family: "Nunito Sans";
+}
+
+.container {
+  display: flex;
+  height: 100vh;
+  background-color: #739ad1;
+}
+
+.settings-container {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  overflow-y: auto;
+  padding: 20px;
+  margin-top: 1.5%;
+  margin-bottom: 1.5%;
+  margin-left: 26%;
+  margin-right: 4%;
+  border-radius: 15px;
+  background-color: #ffffff;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.settings-nav {
+  flex-direction: column;
+  width: 30%;
+  display: flex;
+  border-right: #739ad1;
+  border-right-width: 5px;
+  border-right-style: inset;
+}
+
+.sub-settings-content {
+  flex-grow: 1;
+  padding: 3%;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.sub-item {
+  padding: 5px 106px 5px 5px;
+  cursor: pointer;
+}
+
+.sub-item:hover {
+  color: #ffffff;
+  background-color: #739ad1;
+}
+
+.settings-text {
+  color: #739ad1;
+  font-weight: bold;
+}
+
+.settings-name {
+  color: #739ad1;
+  font-weight: bold;
+  margin: 0px;
+  padding-top: 20px;
+}
+
+.sub-item.highlighted {
+  color: #ffffff;
+  background-color: #739ad1;
+}
+
+.settings-title,
+.account-settings,
+.notifications-settings,
+.blocked-settings {
+  margin-left: 1%;
+}
+
+.settings-parent-container {
+  display: grid;
+  grid-template-areas: "settings subsettings";
+}
+
+.settings-container {
+  grid-area: settings;
+}
+
+.account-form form {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+}
+
+
+.notif-badge-form,
+.blocked-accounts-form p,
+.delete-account-form p {
+  margin: 0px;
+  padding-top: 3px;
+}
+
+.delete-account-form label {
+  margin: 0px;
+  padding-top: 3px;
+}
+
+.submit-button {
+  display: block;
+  margin-left: auto;
+  margin-top: 20px;
+  background-color: #739ad1;
+  color: #fff;
+  border: none;
+  padding: 15px;
+  padding-left: 30px;
+  padding-right: 30px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bolder;
+}
+
+.submit-button:hover {
+  color: #ffffff;
+  background-color: #739ad1;
+}
+
+.change-email-form label,
+.change-password-form label {
+  padding-top: 3px;
+}
+
+.blocked-accounts-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.blocked-accounts-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 6px;
+}
+
+.blocked-accounts-list li button.unblock-button {
+  margin-left: auto;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.checkbox-container {
+  display: flex;
+  align-items: center;
+}
+
+.checkbox-container label {
+  margin-left: 10px;
+}
+
+@media (max-width: 426px) {
+  .settings-parent-container {
+    grid-template-areas:
+      "settings"
+      "subsettings";
+  }
+}
+
+@media (min-width: 427px) and (max-width: 768px) {
+  .settings-parent-container {
+    grid-template-areas: "settings subsettings";
+  }
+}
+
+@media (min-width: 769px) {
+  .settings-parent-container {
+    grid-template-areas: "settings subsettings";
+    grid-template-columns: 30% 70%;
+  }
+}
+
+.navigation {
+  width: 18%;
+  background-color: #ffffff;
+  color: #739ad1;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: fixed;
+  /* Fixed position to keep the navigation visible while scrolling */
+  height: 100%;
+  overflow: hidden;
+}
+
+.navigation ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 130px;
+}
+
+.navigation a {
+  margin-bottom: 10px;
+  color: #739ad1;
+  text-decoration: none;
+  font-size: large;
+  display: flex;
+  align-items: center;
+}
+
+.navigation a:hover {
+  font-weight: bold;
+}
+
+.navigation ul img {
+  margin-right: 15px;
+  width: 40px;
+  /* Adjust the width of the icons as needed */
+  height: 40px;
+  /* Adjust the height of the icons as needed */
+}
+
+.logo-link {
+  position: absolute;
+  top: 5%;
+  left: 50%;
+  /* Center the logo horizontally */
+  transform: translateX(-50%);
+  /* Center the logo horizontally */
+  z-index: 2;
+  /* Ensure the logo is above other elements */
+}
+
+.logo {
+  width: 60px;
+  /* Adjust the size as needed */
+  height: auto;
+  cursor: pointer;
+}
+
+/* Add styles for the dropdown */
+.navigation .more-dropdown {
+  position: relative;
+}
+
+.navigation .dropdown-content {
+  display: none;
+  position: absolute;
+  top: 105%;
+  left: 0;
+  width: 180px;
+  background-color: #739ad1;
+  border-radius: 0 0 10px 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1;
+  opacity: 0;
+  /* Initial opacity set to 0 */
+  transition: opacity 0.3s ease;
+  /* Smooth transition for opacity */
+}
+
+.navigation .dropdown-content a {
+  color: #ffffff;
+  padding: 3px;
+  margin-left: 10px;
+  margin-right: 10px;
+  text-decoration: none;
+  display: block;
+  transition: background-color 0.3s ease;
+  /* Smooth transition for background-color */
+}
+
+.navigation .dropdown-content a:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.more-dropdown:hover .dropdown-content {
+  display: block;
+  opacity: 1;
+  /* Set opacity to 1 on hover */
+}
+
+::-webkit-scrollbar {
+  width: 12px; /* Set the width of the scrollbar */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #739ad1; /* Set the color of the scrollbar thumb */
+}
+
+::-webkit-scrollbar-track {
+  background-color: #ccc; /* Set the color of the scrollbar track */
+}
+
+.delete-account-form label, .account-form label {
+  margin-top: 3px;
+}
+
+
+.password-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+#password_field, .password-field {
+  padding-right: 40px;
+  width: 100%;
+  min-height: max-content;
+  border-radius: 5px;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  padding-left: 11px;
+  margin-top: 10px;
+}
+
+#password, #currentPassword, #newPassword, #confirmNewPassword, #deletePassword {
+  padding-right: 40px;
+  width: 100%;
+  min-height: max-content;
+  border-radius: 5px;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  padding-left: 11px;
+  margin-top: 10px;
+}
+
+#newEmail, #currentEmail {
+  padding-right: 40px;
+  width:auto;
+  min-height: max-content;
+  border-radius: 5px;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  padding-left: 11px;
+  margin-top: 10px;
+}
+
+#hide_pass, #show_pass, 
+#hide_pass1,#show_pass1,
+#hide_pass2,#show_pass2 {
+    position: absolute;
+    right: 20px;
+    padding-top: 10px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 5%;
+  }
+
+#show_pass:hover, #show_pass1:hover, #show_pass2:hover {
+    cursor: pointer;
+}
+
+#hide_pass:hover, #hide_pass1:hover, #hide_pass2:hover {
+    cursor: pointer;
+}
+
+.container input[type="password"] {
+  color: #182742;
+}
+
+.switch {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: relative;
+  width: 60px;
+  height: 34px;
+  background-color: #ccc;
+  border-radius: 34px;
+  cursor: pointer;
+}
+
+.slider:before {
+  content: "";
+  position: absolute;
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  border-radius: 50%;
+  transition: transform 0.4s ease;
+}
+
+.slider input:checked + .slider:before {
+  transform: translateX(26px);
+}
+input:checked + .slider {
+  background-color: #739ad1;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #739ad1;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+.checkbox-container-notif span {
+  font-size: larger;
+}
+
+.checkbox-container-notif {
+  margin-top: 15px;
+  margin-bottom: 10px;
+  padding-left: 10%;
+  padding-right: 10%;
+  display: flex;
+  justify-content:space-between;
+  align-items: center;
+  text-align: left;
+}
+.modal-content p {
+  font-size: 24px;
+  text-align: center;
+}
+
+.close-modal {
+  text-align: center;
+}
+
+#my_modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.3);
+  padding-top: 60px;
+}
+
+.show-modal {
+  display: block;
+}
+
+.close {
+  padding: 3%;
+  background-color: #182742;
+  color: #fefefe;
+  border-radius: 5px;
+  width: 20%;
+}
+
+#loading_modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.3);
+  padding-top: 60px;
+}
+
+.spinner {
+  width: 56px;
+  height: 56px;
+  display: grid;
+  border: 4.5px solid #0000;
+  border-radius: 50%;
+  border-color: #dbdcef #0000;
+  animation: spinner-e04l1k 1s infinite linear;
+}
+
+.spinner::before,
+.spinner::after {
+  content: "";
+  grid-area: 1/1;
+  margin: 2.2px;
+  border: inherit;
+  border-radius: 50%;
+}
+
+.spinner::before {
+  border-color: #739AD1 #0000;
+  animation: inherit;
+  animation-duration: 0.5s;
+  animation-direction: reverse;
+}
+
+.spinner::after {
+  margin: 8.9px;
+}
+
+@keyframes spinner-e04l1k {
+  100% {
+      transform: rotate(1turn);
+  }
+}
+
+.loading-modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  margin-top: 10%;
+  padding: 20px;
+  width: 20%;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.loading-modal-content label{
+  margin-top: 3%;
+  font-weight: bold;
+}
+.modal-content {
+  background-color: #fefefe;
+  margin: 5% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 30%;
+  border-radius: 10px;
+
+}
+
+/* Delete Confirmation Modal CSS*/
+
+#shareModal {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  opacity: 0; /* Initial opacity set to 0 */
+  transition: opacity 0.5s ease; /* Smooth transition for opacity */
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 999999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+#modal_message {
+  font-size: 24px; /* Adjust the font size as needed */
+  margin-bottom: 10px; /* Add margin at the bottom if needed */
+}
+
+.modal-content p {
+  font-size: 24px;
+  text-align: center;
+}
+
+.close-modal {
+  text-align: center;
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  border-radius: 10px;
+  width: 30%; /* Adjust as needed */
+  position: relative;
+  animation: fadeIn 0.5s ease;
+}
+
+.close1 {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close1:hover,
+.close1:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+
+#shareModal h2 {
+  color: #739ad1;
+  font-weight: bold;
+  margin: 10px 0px 10px 10px;
+  margin-top:10%;
+  text-align: center;
+}
+
+#shareModal button{
+  display: block;
+  margin: 10px auto;
+  color: #fff;
+  border: none;
+  padding: 15px;
+  padding-left: 30px;
+  padding-right: 30px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: bolder;
+  font-size: 15px;
+}
+
+#buttons {
+  display: flex;
+  justify-content: center;
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
+
+#buttons #blue {
+  background-color: #739ad1;
+}
+
+#buttons #blue:hover {
+  background-color: #597eb3;
+  cursor: pointer;
+}
+
+#buttons #red {
+  background-color:red;
+}
+
+#buttons #red:hover {
+  background-color: darkred;
+  cursor: pointer;
+}
+
+.badge-modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999999;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+}
+
+.badge-modal-content {
+  font-size: 24px;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.badge-open-btn {
+  background-color: #739ad1;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 20px;
+  width: 30px;
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.badge-close-btn {
+  background-color: red;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 20px;
+  height: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+
+}
+
+.badge-btn-group {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}

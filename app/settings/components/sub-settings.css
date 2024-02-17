@@ -1,0 +1,272 @@
+/* home.css */
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans&display=swap");
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #739ad1;
+  font-family: "Nunito Sans";
+}
+
+.container {
+  display: flex;
+  height: 100vh;
+  background-color: #739ad1;
+}
+
+.settings-parent-container {
+  flex-grow: 1;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  overflow-y: auto;
+  padding: 20px;
+  margin-top: 1.5%;
+  margin-bottom: 1.5%;
+  margin-left: 26%;
+  margin-right: 4%;
+  border-radius: 15px;
+  background-color: #ffffff;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.sub-item {
+  padding: 5px 88px 5px 5px;
+  cursor: pointer;
+}
+
+.sub-item:hover {
+  color: #ffffff;
+  background-color: #739ad1;
+}
+
+.settings-text {
+  color: #739ad1;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.settings-name {
+  color: #739ad1;
+  font-weight: bold;
+  margin: 0px;
+  padding-top: 20px;
+}
+
+.sub-item.highlighted {
+  color: #ffffff;
+  background-color: #739ad1;
+}
+
+.settings-title,
+.account-settings,
+.notifications-settings,
+.blocked-settings {
+  margin-left: 3%;
+}
+
+.checkbox-container-notif {
+  padding-top: 1%;
+}
+
+.sub-settings-content {
+  margin-left: 3%;
+  margin-right: 4%;
+}
+
+.settings-parent-container {
+  display: grid;
+  grid-template-areas: "settings subsettings";
+}
+
+.settings-container {
+  border-right: 2px solid #739ad1;
+  height: 100%;
+  box-sizing: border-box;
+  grid-area: settings;
+}
+
+.account-form form {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+}
+
+.submit-button {
+  color: #739ad1;
+  padding: 5px 5px 5px 5px;
+  cursor: pointer;
+  border: solid #739ad1;
+  border-radius: 5px;
+  border-width: 1px;
+  margin-left: auto;
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  width: 180px;
+  text-align: center;
+}
+
+.submit-button:hover {
+  color: #ffffff;
+  background-color: #739ad1;
+}
+
+.change-email-form label,
+.change-password-form label {
+  padding-top: 8px;
+}
+
+label {
+  padding-top: 8px;
+}
+
+.blocked-accounts-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.blocked-accounts-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 6px;
+}
+
+.blocked-accounts-list li button.unblock-button {
+  margin-left: auto;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.checkbox-container {
+  display: flex;
+  align-items: center;
+}
+
+.checkbox-container label {
+  margin-left: 10px;
+}
+
+@media (max-width: 426px) {
+  .settings-parent-container {
+    grid-template-areas:
+      "settings"
+      "subsettings";
+  }
+}
+
+@media (min-width: 427px) and (max-width: 768px) {
+  .settings-parent-container {
+    grid-template-areas: "settings subsettings";
+  }
+}
+
+@media (min-width: 769px) {
+  .settings-parent-container {
+    grid-template-areas: "settings subsettings";
+    grid-template-columns: 30% 70%;
+  }
+}
+
+.navigation {
+  width: 18%;
+  background-color: #ffffff;
+  color: #739ad1;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: fixed;
+  /* Fixed position to keep the navigation visible while scrolling */
+  height: 100%;
+  overflow: hidden;
+}
+
+.navigation ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 130px;
+}
+
+.navigation a {
+  margin-bottom: 10px;
+  color: #739ad1;
+  text-decoration: none;
+  font-size: large;
+  display: flex;
+  align-items: center;
+}
+
+.navigation a:hover {
+  font-weight: bold;
+}
+
+.navigation ul img {
+  margin-right: 15px;
+  width: 40px;
+  /* Adjust the width of the icons as needed */
+  height: 40px;
+  /* Adjust the height of the icons as needed */
+}
+
+.logo-link {
+  position: absolute;
+  top: 5%;
+  left: 50%;
+  /* Center the logo horizontally */
+  transform: translateX(-50%);
+  /* Center the logo horizontally */
+  z-index: 2;
+  /* Ensure the logo is above other elements */
+}
+
+.logo {
+  width: 60px;
+  /* Adjust the size as needed */
+  height: auto;
+  cursor: pointer;
+}
+
+/* Add styles for the dropdown */
+.navigation .more-dropdown {
+  position: relative;
+}
+
+.navigation .dropdown-content {
+  display: none;
+  position: absolute;
+  top: 105%;
+  left: 0;
+  width: 180px;
+  background-color: #739ad1;
+  border-radius: 0 0 10px 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1;
+  opacity: 0;
+  /* Initial opacity set to 0 */
+  transition: opacity 0.3s ease;
+  /* Smooth transition for opacity */
+}
+
+.navigation .dropdown-content a {
+  color: #ffffff;
+  padding: 3px;
+  margin-left: 10px;
+  margin-right: 10px;
+  text-decoration: none;
+  display: block;
+  transition: background-color 0.3s ease;
+  /* Smooth transition for background-color */
+}
+
+.navigation .dropdown-content a:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.more-dropdown:hover .dropdown-content {
+  display: block;
+  opacity: 1;
+  /* Set opacity to 1 on hover */
+}

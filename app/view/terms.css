@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans&display=swap');
+
+.body {
+    padding: 0;
+    margin: 16px;
+    text-align: center;
+}
+
+.container {
+    overflow: auto;
+    margin:24px 0 24px 0;
+    height: 50%;
+    font-family: 'Nunito Sans';
+    align-items: center;
+    justify-content: center;
+}
+
+.header {
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+.header h1 {
+    font-size: 24px;
+    color: #739AD1;
+}
+
+.fa-solid{
+    color: #739AD1;
+    font-size: 42px;
+}
+
+.container h3 {
+    font-size: 24px;
+}
+
+.container p {
+    font-size: 16px;
+}
+
+::-webkit-scrollbar {
+    width: 12px; /* Set the width of the scrollbar */
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #3498db; /* Set the color of the scrollbar thumb */
+}
+
+::-webkit-scrollbar-track {
+    background-color: #f1f1f1; /* Set the color of the scrollbar track */
+}

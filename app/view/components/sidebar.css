@@ -1,0 +1,34 @@
+.circle {
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    background-color: #739ad1;
+    position: relative;
+    
+    left: 12%;
+    margin-top: -20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.badge {
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+}
+
+.badge-text {
+    color: white;
+    font-weight: bold;
+    font-size: 10px;
+    
+}
+
+.notif-head {
+    position: relative;
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    left: -20px;
+}

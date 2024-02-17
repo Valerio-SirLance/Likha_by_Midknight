@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image and Text on Canvas</title>
+    <style>
+        canvas{
+            width: 40%;
+        }
+    </style>
+</head>
+<body>
+    <!-- The canvas element where the image and text will be drawn -->
+    <canvas id="myCanvas"></canvas>
+    <!-- <button onclick="downloadImage()">Download Image</button> -->
+    <script>
+        let loadImageOnCanvasAndThenWriteText = (canvas, imageUrl, textToWrite, textStyleOptions, xCordOfText, yCordOfText) => {
+          // Get the 2D Context from the canvas
+          let ctx = canvas.getContext("2d");
+
+          // Create a new Image
+          let img = new Image();
+
+          // Setting up a function with the code to run after the image is loaded
+          img.onload = () => {
+            // Once the image is loaded, we will get the width & height of the image
+            let loadedImageWidth = img.width;
+            let loadedImageHeight = img.height;
+
+            // Set the canvas to the same size as the image.
+            canvas.width = loadedImageWidth;
+            canvas.height = loadedImageHeight;
+
+            // Draw the image on to the canvas.
+            ctx.drawImage(img, 0, 0);
+
+            // Set all the properties of the text based on the input params
+            ctx.font = `${textStyleOptions.fontSize}px ${textStyleOptions.fontFamily}`;
+            ctx.fillStyle = textStyleOptions.textColor;
+            ctx.textAlign = textStyleOptions.textAlign;
+            
+            // Setting this so that the position of the text can be set
+            // based on the x and y coordinates from the top left corner
+            ctx.textBaseline = "top";
+            
+            // Finally, adding the text to the image
+            ctx.fillText(textToWrite, xCordOfText, yCordOfText);
+          };
+
+          // Now that we have set up the image "onload" handler, we can assign
+          // an image URL to the image.
+          img.src = imageUrl;
+        };
+        function downloadImage() {
+            let canvas = document.getElementById("myCanvas");
+
+            // Get the data URL of the canvas content
+            let dataUrl = canvas.toDataURL('image/png');
+
+            // Create a link element
+            let downloadLink = document.createElement("a");
+
+            // Set the href attribute to the data URL
+            downloadLink.href = dataUrl;
+
+            // Set the download attribute to the desired filename
+            downloadLink.download = "generated_image.png";
+
+            // Append the link to the document
+            document.body.appendChild(downloadLink);
+
+            // Trigger a click on the link to start the download
+            downloadLink.click();
+
+            // Remove the link from the document
+            document.body.removeChild(downloadLink);
+        }
+
+        // Run code after the page is loaded
+        document.addEventListener("DOMContentLoaded", () => {
+          // Setting up the canvas
+          let theCanvas = document.getElementById("myCanvas");
+
+          // Some image URL..
+          let imageUrl = "../posting/uploads/b1.png";  // Replace with the actual path to your image
+
+          let textStyleOptions = {
+            fontSize: 172,
+            fontFamily: "Arial",
+            textColor: "rgba(97, 64, 33)",
+            textAlign: "justify"
+          };
+
+          let textToWrite = "POGI AKO 123";
+
+          let xCordOfText = 200;
+          let yCordOfText = 970;
+
+          // Load image on the canvas & then write text
+          loadImageOnCanvasAndThenWriteText(
+            theCanvas,
+            imageUrl,
+            textToWrite,
+            textStyleOptions,
+            xCordOfText,
+            yCordOfText
+          );
+          downloadImage();
+        });
+    </script>
+</body>
+</html>

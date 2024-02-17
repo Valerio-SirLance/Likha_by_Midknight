@@ -1,0 +1,903 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans&display=swap');
+
+* {
+    font-family: 'Nunito Sans';
+}
+
+body {
+    margin: 0;
+    font-family: 'Nunito Sans';
+    background-color: #739AD1;
+}
+
+.navigation-mobile {
+    display: none;
+}
+
+.header-mobile {
+    display: none;
+}
+
+.container {
+    display: flex;
+    height: 100vh;
+    background-color: #739AD1;
+}
+
+.gallery-container {
+    flex-grow: 1;
+    overflow-y: auto;
+    padding: 40px;
+    margin-top: 1.5%;
+    margin-bottom: 1.5%;
+    margin-left: 26%;
+    /* Adjusted margin to leave space for the navigation */
+    margin-right: 4%;
+    border-radius: 15px;
+    background-color: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.no-post-message {
+    text-align: center;
+    font-size: 24px;
+    color: #888;
+    width: 100%; /* Ensure the message takes full width */
+}
+
+i {
+    font-size: 72px;
+    color: white;
+}
+
+.gallery-container h2 {
+    color: #739AD1;
+}
+
+.post-text p {
+    color: #343437;
+    text-align: center;
+    color: #739AD1;
+}
+
+.post-text h2 {
+    color: #343437;
+    text-shadow: none;
+    text-align: center;
+}
+
+.post-text h3 {
+    color: #343437;
+    text-shadow: none;
+    text-align: center;
+}
+
+.profile {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+}
+
+.post-img {
+    padding-left: 20px;
+    width: 55%;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    border-style: inset;
+    border-color: #739AD1;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.post-text {
+    padding-left: 20px;
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.user {
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.circle-img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.circle-img img {
+    width: 50%;
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+}
+
+.post-text h1 {
+    color: #739AD1;
+    font-weight: bold;
+}
+
+
+.navigation {
+    width: 18%;
+    background-color: #FFFFFF;
+    color: #739AD1;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: fixed;
+    /* Fixed position to keep the navigation visible while scrolling */
+    height: 100%;
+}
+
+.navigation ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 130px;
+}
+
+.navigation a {
+    margin-bottom: 10px;
+    color: #739AD1;
+    text-decoration: none;
+    font-size: large;
+    display: flex;
+    align-items: center;
+}
+
+.navigation a:hover {
+    font-weight: bold;
+}
+
+.navigation ul img {
+    margin-right: 15px;
+    width: 40px;
+    /* Adjust the width of the icons as needed */
+    height: 40px;
+    /* Adjust the height of the icons as needed */
+}
+
+.gallery {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    flex-grow: 1;
+    overflow-y: auto;
+    z-index: 1;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    /* Adjust margin to keep content to the right of the navigation */
+}
+
+.post-thumbnail {
+    flex: 0 0 calc(25% - 10px); /* Four items in a row with 10px gap */
+    position: relative;
+    height: 30%;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.post-thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Maintain aspect ratio and cover the container */
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.2s;
+    z-index: 0;
+}
+
+.post-thumbnail img:hover {
+    transform: scale(1.05);
+}
+
+.clearfix {
+    clear: both;
+}
+
+.logo-link {
+    position: absolute;
+    top: 5%;
+    left: 50%;
+    /* Center the logo horizontally */
+    transform: translateX(-50%);
+    /* Center the logo horizontally */
+    z-index: 2;
+    /* Ensure the logo is above other elements */
+}
+
+.logo {
+    width: 60px;
+    /* Adjust the size as needed */
+    height: auto;
+    cursor: pointer;
+}
+
+/* Add styles for the dropdown */
+.navigation .more-dropdown {
+    position: relative;
+}
+
+.navigation .dropdown-content {
+    display: none;
+    position: absolute;
+    top: 105%;
+    left: 0;
+    width: 180px;
+    background-color: #739AD1;
+    border-radius: 0 0 10px 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+    opacity: 0;
+    /* Initial opacity set to 0 */
+    transition: opacity 0.3s ease;
+    /* Smooth transition for opacity */
+}
+
+.navigation .dropdown-content a {
+    color: #FFFFFF;
+    padding: 3px;
+    margin-left: 10px;
+    margin-right: 10px;
+    text-decoration: none;
+    display: block;
+    transition: background-color 0.3s ease;
+    /* Smooth transition for background-color */
+}
+
+.navigation .dropdown-content a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.more-dropdown:hover .dropdown-content {
+    display: block;
+    opacity: 1;
+    /* Set opacity to 1 on hover */
+}
+
+.post-text #blue{
+    display: block;
+    margin: 20px auto;
+    background-color: #739AD1;
+    color: #fff;
+    border: none;
+    padding: 15px;
+    padding-left: 30px;
+    padding-right: 30px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bolder;
+}
+
+.post-text #blue:hover {
+    background-color: #5d82b6;
+    cursor: pointer;
+}
+
+.post-text #red{
+    display: block;
+    margin: 20px auto;
+    background-color:indianred;
+    color: #fff;
+    border: none;
+    padding: 15px;
+    padding-left: 30px;
+    padding-right: 30px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bolder;
+}
+
+.post-text #red:hover {
+    background-color:crimson;
+    cursor: pointer;
+}
+
+::-webkit-scrollbar {
+    width: 12px; /* Set the width of the scrollbar */
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #739AD1; /* Set the color of the scrollbar thumb */
+}
+
+::-webkit-scrollbar-track {
+    background-color: #ccc; /* Set the color of the scrollbar track */
+}
+
+#avatar_btn {
+    margin: 20px;
+    border-top: 2px solid #739AD1;
+    border-bottom: 2px solid #739AD1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#avatar_btn label {
+    color: #739AD1;
+    margin-left: 10px;
+}
+
+#avatar_btn i {
+    color: #739AD1;
+    font-size: 46px;
+    margin-right: 10px;
+}
+
+#avatar_btn:hover {
+    background-color: #f0f0f0;
+    cursor: pointer;
+}
+
+#avatarModal {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    /* Initial opacity set to 0 */
+    transition: opacity 0.5s ease;
+    /* Smooth transition for opacity */
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    opacity: 0;
+    /* Initial opacity set to 0 */
+    transition: opacity 0.5s ease;
+    /* Smooth transition for opacity */
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    width: 90%;
+    border: 1px solid #888;
+    border-radius: 10px;
+    width: 40%;
+    position: relative;
+    animation: fadeIn 0.5s ease;
+}
+
+.modal-content h1 {
+    color:#739AD1;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.avatar-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.avatar-img {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.avatar-img img.selected-avatar {
+    border: 4px solid #1f65c6;
+}
+
+#avatarModal h3 {
+    color: #739AD1;
+    font-weight: bold;
+}
+
+#avatarModal span {
+    color: #343437;
+    font-weight: bold;
+}
+
+#avatarModal button {
+    display: block;
+    margin: 20px auto;
+    background-color: #739AD1;
+    color: #fff;
+    border: none;
+    padding: 15px;
+    padding-left: 30px;
+    padding-right: 30px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bolder;
+}
+
+.avatar-img img {
+    width: 70px;
+    border-radius: 100px;
+}
+
+.avatar-img span {
+    flex-grow: 1;
+    margin-left: 10px;
+}
+
+.avatar-container {
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+.avatar-container img:hover {
+    transform: scale(1.05);
+    cursor: pointer;
+}
+
+
+#avatarModal.fade-out,
+.modal.fade-out {
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+#bioModal {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+#bioModal.fade-out {
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+#bioModal .modal {
+    display: flex;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+#bioModal .modal-content {
+
+    margin: 15% auto;
+    padding: 20px;
+    width: 50%;
+    border: 1px solid #888;
+    border-radius: 10px;
+    width: 40%;
+    position: relative;
+    animation: fadeIn 0.5s ease;
+}
+
+.div-input{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#bioModal .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#bioModal .close:hover,
+#bioModal .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#bioModal h3 {
+    color: #739AD1;
+    font-weight: bold;
+}
+
+#bioModal form {
+    margin-top: 20px;
+}
+
+
+#bio_input {
+    width: 90%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+#bioModal button {
+    display: block;
+    margin: 20px auto;
+    background-color: #739AD1;
+    color: #fff;
+    border: none;
+    padding: 15px;
+    padding-left: 30px;
+    padding-right: 30px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bolder;
+}
+
+#bioModal.fade-out,
+#bioModal .modal.fade-out {
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+#bio-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@media screen and (min-width: 319px) and (max-width: 426px) {
+    body {
+        font-size: 12px;
+    }
+
+    .logo-link-mobile {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+    }
+
+    .logo-link-mobile img {
+        width: 100%;
+        height: 20px;
+        align-items: center;
+        margin: 8px 8px 8px 16px;
+    }
+
+    .notif-mobile {
+        display: flex;
+        justify-content: center;
+    }
+
+    .notif-mobile img {
+        display: flex;
+        margin: 8px;
+        width: 30px;
+        height: 30px;
+    }
+
+    .header-mobile {
+        position:absolute;
+        top: 0;
+        width: 100vw;
+        height: 48px;
+        background-color: #FFFFFF;
+        color: #1DA1F2;
+        display: flex;
+        justify-content: space-between;
+        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+        z-index: 2;
+    }
+
+    .navigation {
+        display: none;
+    }
+    
+    .navigation-mobile {
+        position: fixed;
+        bottom: 0;
+        width: 100vw;
+        height: 48px;
+        background-color: #FFFFFF;
+        color: #1DA1F2;
+        display: flex;
+        justify-content: space-around;
+        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+        z-index: 2;
+    }
+
+    .navigation-mobile img {
+        display: flex;
+        justify-content: space-between;
+        margin: 8px;
+        width: 30px;
+        height: 30px;
+    }   
+    .logo-link {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 2;
+    }
+
+    .navigation .more-dropdown {
+        position: relative;
+    }
+        
+    .navigation-mobile .dropdown-content {
+        display: none;
+        position: absolute;
+        top: 105%;
+        left: 0;
+        width: 180px;
+        background-color: #739AD1;
+        border-radius: 0 0 10px 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        z-index: 1;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    .navigation-mobile .dropdown-content a {
+        color: #FFFFFF;
+        padding: 3px;
+        margin-left: 10px;
+        margin-right: 10px;
+        text-decoration: none;
+        display: block;
+        transition: background-color 0.3s ease;
+    }
+
+    .navigation-mobile .dropdown-content a:hover {
+        background-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .more-dropdown:hover .dropdown-content {
+        display: block;
+        opacity: 1;
+    }
+
+    .container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .gallery-container {
+        border-radius: 15px;
+        background-color: #FFFFFF;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        margin: 72px 12px 72px 12px;
+        padding: 24px 10px 24px 10px;
+        align-items: center;
+    }
+
+    .post-img {
+        padding-left: 20px;
+        width: 90%;
+        display: flex;
+        flex-direction: column;
+        border-radius: 10px;
+        border-style: inset;
+        border-color: #739AD1;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        order: 2;
+    }
+
+    .gallery {
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        flex-grow: 1;
+        overflow-y: auto;
+        z-index: 1;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .post-thumbnail {
+        flex: 0 0 calc(33.33% - 10px);
+    }
+
+    .post-text {
+        padding-left: 0px;
+        width: 90%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .profile {
+        display: contents;
+        width: 100%;
+        height: 100%;
+    }
+
+    .user {
+        padding: 10px;
+        display: flex;
+        flex-direction: column; /* Change from row to column */
+        align-items: center;
+    }
+    
+    .circle-img {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 10px; /* Add margin to separate from the bio and buttons */
+    }
+
+    .circle-img img {
+        border-radius: 50%;
+        width: 100px;
+        height: 100px;
+    }
+
+    .post-text h1 {
+        margin: 2px;
+    }
+    
+    .post-text h2 {
+        margin: 8px;
+        font-size: 16px;
+    }
+    
+    .post-text h3 {
+        color: #343437;
+        text-shadow: none;
+        text-align: center;
+    }
+
+    .post-text #blue {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 50%;
+        height: 20px;
+        font-size: 12px;
+    }
+
+    .bio-container {
+        margin-top: 20px; /* Add margin to separate from the user image */
+    }
+
+    #avatar_btn, #bio-container {
+        width: 100%;
+    }
+
+    .modal-content {
+        background-color: #fefefe;
+        padding: 20px;
+        width: 75%;
+        height: 60%;
+        border: 1px solid #888;
+        border-radius: 10px;
+        position: relative;
+        animation: fadeIn 0.5s ease;
+    }
+    
+    .modal-content h1 {
+        font-size: 16px;
+    }
+    
+    .close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+    
+    .close:hover,
+    .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+    }
+    
+    .avatar-container {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .avatar-img {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        text-align: left;
+        margin-bottom: 20px;
+    }
+    
+    .avatar-img img.selected-avatar {
+        border: 4px solid #1f65c6;
+    }
+    
+    #avatarModal h3 {
+        color: #739AD1;
+        font-weight: bold;
+    }
+    
+    #avatarModal span {
+        color: #343437;
+        font-weight: bold;
+    }
+    
+    #avatarModal button {
+        display: block;
+        margin: 8px auto;
+        background-color: #739AD1;
+        color: #fff;
+        border: none;
+        padding: 15px;
+        padding-left: 30px;
+        padding-right: 30px;
+        border-radius: 5px;
+    }
+    
+    .avatar-img img {
+        width: 40px;
+        border-radius: 100px;
+    }
+    
+    .avatar-img span {
+        flex-grow: 1;
+        margin-left: 10px;
+    }
+    
+    .avatar-container {
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+    
+    .avatar-container img:hover {
+        transform: scale(1.05);
+        cursor: pointer;
+    }
+
+    ::-webkit-scrollbar {
+        display: none;
+    }
+
+}

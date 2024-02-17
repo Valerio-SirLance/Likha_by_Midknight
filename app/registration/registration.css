@@ -1,0 +1,499 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans&display=swap');
+
+body,
+html {
+    padding: 0;
+    margin: 0;
+    font-family: 'Nunito Sans';
+    height: 100%;
+    background: url('../assets/images/register_bg.png') center/cover
+                no-repeat;
+    background-color: #121213;
+}
+
+.container {
+    width: 100%;
+    display: flex;
+    /* justify-content: center;
+    justify-self: center; */
+    flex-direction: row;
+    /* margin: 2% 20% 2% 20%; */
+}
+
+.img-sign {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+}
+
+.img-sign h2 {
+    text-align: center;
+    margin: 50px 20px 0 20px;
+    color:#739AD1;
+    font-size: 50px;
+}
+
+.img-sign p {
+    color:#ffffff
+}
+
+
+.logo {
+    display: flex;
+    justify-content: center;
+    width: 100px;
+    margin: auto;
+    margin-top: 30px;
+}
+
+.register-img {
+    display: flex;
+    justify-content: center;
+    max-width: 100%;
+    width: 450px;
+    margin: auto;
+    margin-top: 30px;
+}
+
+.img-sign p {
+    width: 60%;
+    text-align: center;
+    font-size: 18px;
+    align-self: center;
+    width: 50%;
+}
+
+.container-form {
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    width: 30vw;
+    height: 100%;
+    position: fixed;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+.container-form h2 {
+    color:#739AD1;
+    text-align: center;
+    margin: 15px 20px 0 20px;
+    font-family: 'Nunito Sans';
+}
+
+.input-form {
+    display: flex;
+    margin: 5%;
+    justify-content: center;
+    flex-direction: column;
+    font-size: 12px;
+}
+
+.input-form input {
+    margin: 5px 0 5px 0;
+    padding: 8px;
+    border-color: #bababa 1px;
+    background-color: transparent;
+    border: 1px solid gray;
+    border-radius: 5px;
+    /* border-bottom: 2px solid rgb(255, 255, 255); */
+}
+
+.password-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+#password_field {
+    padding-right: 40px;
+    /* Adjust the value based on your icon size */
+    width: 100%;
+}
+
+#hide_pass,
+#show_pass {
+    position: absolute;
+    right: 10px;
+    width: 5%;
+    cursor: pointer;
+    background: none;
+    border: none;
+}
+
+#show_pass:hover {
+    cursor: pointer;
+}
+
+#hide_pass:hover {
+    cursor: pointer;
+}
+
+.confirm-password-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+#confirm_password_field {
+    padding-right: 40px;
+    /* Adjust the value based on your icon size */
+    width: 100%;
+}
+
+#hide_confirm_pass,
+#show_confirm_pass {
+    position: absolute;
+    right: 10px;
+    width: 5%;
+    cursor: pointer;
+    background: none;
+    border: none;
+}
+
+#show_confirm_pass:hover {
+    cursor: pointer;
+}
+
+#hide_confirm_pass:hover {
+    cursor: pointer;
+}
+
+input[type="date"]::before,
+input[type="date"]::after {
+    color: green;
+}
+
+.terms_condition {
+    margin-top: 3%;
+    font-size: 12px;
+}
+
+.terms_condition a {
+    text-decoration: none;
+}
+
+.terms_condition a:hover {
+    color: #182742;
+}
+
+.login {
+    text-align: center;
+}
+
+.login a {
+    text-decoration: none;
+
+}
+
+.login a:hover {
+    color: #182742;
+}
+
+#btn_submit {
+    margin-top: 3%;
+    padding: 10px;
+    background-color: #739AD1;
+    color: white;
+}
+
+#btn_submit:hover {
+    background-color: #182742;
+    color: white;
+}
+
+.center {
+    text-align: center;
+}
+
+.text-white {
+    margin-top: 20px;
+    color: white;
+    font-size:xx-large;
+}
+
+.text-dark {
+    color: #182742;
+
+}
+
+.font-bold {
+    font-weight: bold;
+}
+
+#my_modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.3);
+    padding-top: 60px;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 30%;
+    border-radius: 10px;
+  
+}
+.slide-bottom {
+	-webkit-animation: slide-bottom 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+	        animation: slide-bottom 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+@-webkit-keyframes slide-bottom {
+    0% {
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+    }
+
+    100% {
+        -webkit-transform: translateY(100px);
+        transform: translateY(100px);
+    }
+}
+
+@keyframes slide-bottom {
+    0% {
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+    }
+
+    100% {
+        -webkit-transform: translateY(100px);
+        transform: translateY(100px);
+    }
+}
+
+.modal-content p {
+    font-size: 24px;
+    text-align: center;
+}
+
+.close-modal {
+    text-align: center;
+}
+
+.close {
+    padding: 3%;
+    background-color: #182742;
+    color: #fefefe;
+    border-radius: 5px;
+    width: 20%;
+}
+
+.terms-modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    padding-top: 60px;
+}
+
+.terms-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 8px;
+    border: 1px solid #888;
+    width: 600px;
+    border-radius: 10px;
+}
+
+.terms-content p {
+    font-size: 24px;
+    text-align: center;
+
+}
+
+.close-terms-modal {
+    text-align: center;
+
+}
+
+.close-terms {
+    padding: 3%;
+    background-color: #182742;
+    color: #fefefe;
+    border-radius: 5px;
+    width: 20%;
+}
+
+.close-terms:hover {
+    background-color: #324871;
+    cursor: pointer;
+}
+
+.show-terms-modal {
+    display: block;
+    /* Add other styling properties for the visible modal */
+}
+
+@media screen and (min-width: 320px) and (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .register-img {
+        display: flex;
+        justify-content: center;
+        max-width: 100%;
+        width: 150px;
+        margin: auto;
+        margin-top: 16px;
+    }
+
+    .img-sign {
+        width: 100%;
+    }
+
+    .img-sign h2 {
+        margin: 30px 20px 0 20px;
+        font-size: 30px;
+    }
+
+    .img-sign p {
+        width: 80%;
+        font-size: 14px;
+    }
+
+    .container-form {
+        position: relative;
+        width: 100vw;
+        margin: 12px 0px;
+    }
+
+    .container-form h2 {
+        margin: 15px 20px 0 20px;
+        font-size: 20px;
+    }
+
+    .input-form {
+        margin: 5%;
+        font-size: 12px;
+    }
+
+    .input-form input {
+        width: 88vw;
+        padding: 5px;
+    }
+
+    #password_field,
+    #confirm_password_field {
+        width: 88vw;
+        padding: 5px;
+    }
+
+    #hide_pass,
+    #show_pass,
+    #hide_confirm_pass,
+    #show_confirm_pass {
+        width: 16px;
+    }
+
+    .terms_condition {
+        display: flex;
+        align-items: center;
+    }
+    
+    .terms_condition input[type="checkbox"] {
+        width: 16px;
+        margin-right: 5px;
+    }
+
+
+    .login {
+        margin-top: 3%;
+        font-size: 12px;
+    }
+
+    .text-white {
+        font-size: large;
+    }
+
+    .close,
+    .close-terms {
+        width: 30%;
+    }
+
+    .terms-content {
+        width: 90%;
+    }
+}
+
+
+#loading_modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.3);
+    padding-top: 60px;
+}
+
+.spinner {
+    width: 56px;
+    height: 56px;
+    display: grid;
+    border: 4.5px solid #0000;
+    border-radius: 50%;
+    border-color: #dbdcef #0000;
+    animation: spinner-e04l1k 1s infinite linear;
+}
+
+.spinner::before,
+.spinner::after {
+    content: "";
+    grid-area: 1/1;
+    margin: 2.2px;
+    border: inherit;
+    border-radius: 50%;
+}
+
+.spinner::before {
+    border-color: #739AD1 #0000;
+    animation: inherit;
+    animation-duration: 0.5s;
+    animation-direction: reverse;
+}
+
+.spinner::after {
+    margin: 8.9px;
+}
+
+@keyframes spinner-e04l1k {
+    100% {
+        transform: rotate(1turn);
+    }
+}
+
+.loading-modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    margin-top: 5%;
+    padding: 20px;
+    width: 20%;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.loading-modal-content label{
+    margin-top: 3%;
+    font-weight: bold;
+}
