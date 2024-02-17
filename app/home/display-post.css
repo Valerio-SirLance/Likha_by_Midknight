@@ -91,6 +91,7 @@ body {
     background-color: #739AD1;
     border: none;
     color: #f0eceb;
+    padding: 10px;
     border-radius: 5px;
 }
 
@@ -683,7 +684,7 @@ body {
 }
 
 #buttons #red {
-    background-color:red;
+    background-color:#ff5555;
 }
 
 #buttons #red:hover {
@@ -728,7 +729,6 @@ body {
     border-radius: 50%;
     opacity: 80%;
     border: none;
-    z-index: 2;
     outline: none;
 }
 

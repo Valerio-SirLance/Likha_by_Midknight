@@ -215,7 +215,7 @@ $userAvatar = getAvatarUrl($post_id);
                             echo '<img src="../assets/images/more-vertical.svg">';
                             echo '<div class="dropdown" id="dropdown">';
                             echo '<button type="button" onclick="openShareModal(\'' . $post_id . '\')">Delete</button>';
-                            echo '<button type="button" onclick="toggleEdit()">Edit Post</button>';
+                            echo '<button type="button" onclick="toggleEdit()">Edit</button>';
                             echo '</div>';
                             echo '</div>';
                         }
@@ -322,7 +322,6 @@ $userAvatar = getAvatarUrl($post_id);
                             <span class="close" onclick="closeShareModal()">&times;</span>
                             <h2>Are you sure you want to delete this post?</h2>
                                 <div id="buttons"><button id="red" onclick="deletePostAndRedirect('<?php echo $post_id; ?>')">Delete Post</button>
-                                <button id="blue" onclick="closeShareModal()">Cancel</button>
                             </div>                            
                         </div>
                     </div>
