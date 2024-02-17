@@ -39,7 +39,7 @@ include('../user profile/session-handler.php');
                     <div class="circle" id="circle">
                         <div class="badge-text" 
                             id="badge-text">
-                            111
+                            0
                         </div>
                     </div>
                     <div class="notif-head" id="notif-head">
