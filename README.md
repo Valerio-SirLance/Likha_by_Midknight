@@ -1,6 +1,6 @@
 <div align="center">
   <a href="https://likha.website/">
-    <img src="https://github.com/Valerio-SirLance/likha_by_midknight/blob/main/app/assets/likha-header.svg" alt="Kajas Logo" width="max-content" padding="0"/>
+    <img src="https://github.com/Valerio-SirLance/Likha_by_Midknight/blob/main/app/assets/likha-header.svg" alt="Kajas Logo" width="max-content" padding="0"/>
   </a>
 
   # Likha by Midknight
