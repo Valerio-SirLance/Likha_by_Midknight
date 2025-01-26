@@ -1,12 +1,27 @@
 <?php
 include('../include/db.php');
-
 session_start();
-
 header('Content-Type: application/json');
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+// Cipher function
+function cipherPassword($password, $user_avatar) {
+    $keys = [$user_avatar, "user", "avatar"];
+    $ciphered_password = "";
+    
+    foreach ($keys as $key) {
+        $key = strrev($key); // Reverse the key
+        $key_length = strlen($key);
+        
+        for ($i = 0; $i < strlen($password); $i++) {
+            $key_char = $key[$i % $key_length]; // Cycle through the key
+            $char_code = ord($password[$i]) + ord($key_char); // Combine ASCII values
+            $ciphered_password .= chr($char_code % 256); // Wrap around if it exceeds 255
+        }
+    }
+    return bin2hex($ciphered_password); // Convert to hexadecimal
+}
 
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = mysqli_real_escape_string($conn, $_POST["email"]);
     $password = $_POST["password"];
 
@@ -16,8 +31,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($query->num_rows > 0) {
         $result = $query->fetch_array();
+        $user_avatar = $result['user_avatar']; // Fetch user_avatar from DB
 
-        if (password_verify($password, $result['password'])) {
+        // Cipher the password using the same function
+        $ciphered_password = cipherPassword($password, $user_avatar);
+
+        if ($ciphered_password === $result['password']) { // Compare ciphered passwords
             $_SESSION['status'] = "Login Successful";
             $_SESSION['user_id'] = $result['user_id'];
             $_SESSION['email'] = $result['email'];
@@ -35,19 +54,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $result_username = $query_username->fetch_assoc();
                 $_SESSION['username'] = $result_username['username'];
             } else {
-                $_SESSION['username'] = 'Unknown'; // Set a default value if username is not found
+                $_SESSION['username'] = 'Unknown';
             }
+
             echo 'Login Successful';
-            $cookie_name = "email";
-            $cookie_value = $_SESSION['email'];
-            if (!isset($_COOKIE[$cookie_name])) {
-                setcookie($cookie_name, $cookie_value, time() + 3600, '/', 'localhost');
-            }
-            $cookie_name_username = "username";
-            $cookie_value_username = $result_username['username'];
-            if (!isset($_COOKIE[$cookie_name_username])) {
-                setcookie($cookie_name_username, $cookie_value_username, time() + 3600, '/', 'localhost');
-            }
+
+            // Set cookies
+            setcookie("email", $_SESSION['email'], time() + 3600, '/', 'localhost');
+            setcookie("username", $_SESSION['username'], time() + 3600, '/', 'localhost');
         } else {
             $_SESSION['status'] = "Incorrect Password";
             echo 'Incorrect Password';
@@ -56,9 +70,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION['status'] = "Incorrect Email";
         echo 'Incorrect Email';
     }
-
 }
-// Close the database connection
 $conn->close();
-
 ?>
