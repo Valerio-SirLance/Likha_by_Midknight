@@ -3,15 +3,27 @@ include('../include/db.php');
 session_start();
 header('Content-Type: application/json');
 
+// Function to generate alternate letters from a string
+function alternateLetters($string) {
+    $result = '';
+    for ($i = 0; $i < strlen($string); $i += 2) {
+        $result .= $string[$i];
+    }
+    return $result;
+}
+
 // Cipher function
 function cipherPassword($password, $user_avatar) {
-    $keys = [$user_avatar, "user", "avatar"];
+    $keys = [
+        $user_avatar,  // Original
+        strrev($user_avatar),  // Reversed
+        alternateLetters($user_avatar)  // Alternate letters
+    ];
     $ciphered_password = "";
-    
+
     foreach ($keys as $key) {
-        $key = strrev($key); // Reverse the key
         $key_length = strlen($key);
-        
+
         for ($i = 0; $i < strlen($password); $i++) {
             $key_char = $key[$i % $key_length]; // Cycle through the key
             $char_code = ord($password[$i]) + ord($key_char); // Combine ASCII values
