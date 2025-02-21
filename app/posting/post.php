@@ -63,14 +63,13 @@ if (!isset($_COOKIE[$cookie_name])) {
         <div class="gallery-container">
             <h1>Create New Post</h1>
             <div class="posting">
-                <div class="post-img">
-                    <img id="preview" src="#" alt="Preview">
-                    <img id="select_icon" src="../assets/images/selectfcomp_icon.png" alt="Select from computer"></img>
-                    <div class="file-img">
+            <div class="post-img" style="position: relative;">
+                    <img id="preview" src="#" alt="Preview" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; display: none;">
+                    <img id="select_icon" src="../assets/images/selectfcomp_icon.png" alt="Select from computer" style="position: relative; z-index: 2;">
+                    <div class="file-img" style="position: relative; z-index: 2;">
                         <label for="input-tag" id="select_img">
                             Select from files
-                            <input id="input-tag" type="file" name="fileInput" accept="image/*"
-                                onchange="previewFile()" />
+                            <input id="input-tag" type="file" name="fileInput" accept="image/*" onchange="previewFile()" />
                             <span id="image-name"></span>
                         </label>
                     </div>

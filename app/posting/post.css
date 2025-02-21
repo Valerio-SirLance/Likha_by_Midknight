@@ -229,9 +229,9 @@ input[type="file"] {
 
 #preview {
   display: none;
-  max-width: 60%; /* Set a maximum width for the preview image */
-  max-height: 50%; /* Maintain the aspect ratio */
-  margin-top: 10px;
+  width: 80%; /* Set a maximum width for the preview image */
+  height: 80%; /* Maintain the aspect ratio */
+  margin-top: 0px;
 }
 
 #select_img {
