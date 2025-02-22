@@ -18,7 +18,16 @@
 
   **Help Desk**: Report unnecessary or malicious content through our dedicated Help Desk feature.
 
+  ## Demo Video 🎥
+
+  Check out the demo of **Likha by Midknight** in action! Click the image below to watch:
   
+  <p align="center">
+    <a href="https://www.youtube.com/watch?v=u6vs4MpEBW4">
+      <img src="https://img.youtube.com/vi/u6vs4MpEBW4/maxresdefault.jpg" alt="Watch the demo" width="400">
+    </a>
+  </p>
+
   ## Webhost Details 🌐
 
   You may visit our app using the **_Sample User Credentials_** below:
@@ -43,7 +52,6 @@
       </td>
     </tr>
   </table>
-
 
   ## Team Members 👨‍💻
 
